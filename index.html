@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pengakuan Manis ✨</title>
+  <title>Pengakuan Ku ✨</title>
   <style>
     /* ====== Theme & Base ====== */
     :root {
@@ -191,14 +191,14 @@
         <div class="logo" aria-hidden="true"></div>
         <div>
           <h1>Pengakuan kecil, from me 🫶</h1>
-          <p class="subtitle">Suasana gelap, kata-kata hangat, dan sedikit permainan tombol.</p>
+          <p class="subtitle">Just for you!</p>
         </div>
       </div>
 
       <!-- Conversation area -->
       <div id="chat" class="chat" aria-live="polite">
         <div class="bubble bot">
-          Hai, boleh kenalan? Namamu siapa ya? 😊
+          Hai, boleh kenalan gak? Namamu siapa ya? 😊
         </div>
         <div class="bubble me" id="askName">
           <label for="nameInput">Tulis namamu di sini</label>
@@ -237,10 +237,6 @@
       </div>
     </div>
 
-    <footer>
-      <span class="pill">Tema gelap</span>
-      <span class="pill">Interaktif</span>
-      <span class="pill">Manis tapi lucu</span>
     </footer>
   </div>
 
@@ -306,7 +302,7 @@
       result.style.display = 'block';
       const name = (nameInput.value || '').trim();
       resultText.textContent = `jujurly Aku juga sangat suka sama kamu, ${name}! 🥰`;
-      resultSub.textContent = 'Terima kasih sudah jujur. Yuk, kita jaga rasa ini dengan hangat dan tulus.';
+      resultSub.textContent = 'Terima kasih sudah jujur ${name}.';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
