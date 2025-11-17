@@ -236,12 +236,14 @@
         <div class="sub" id="resultSub"></div>
       </div>
     </div>
-
-    </footer>
+<!-- Tombol from hannqie di bawah -->
+      <footer>
+        <button class="btn btn-secondary" id="hannqieBtn">from hannqie</button>
+      </footer>
+    </div>
   </div>
 
   <script>
-    // Utility: show typing bubble briefly
     const typing = document.getElementById('typing');
     function showTyping(ms = 900){
       typing.style.display = 'block';
@@ -250,9 +252,9 @@
       }, ms));
     }
 
-    // Elements
     const nameInput = document.getElementById('nameInput');
     const nextBtn = document.getElementById('nextBtn');
+    const hannqieBtn = document.getElementById('hannqieBtn');
     const chat = document.getElementById('chat');
     const likeStage = document.getElementById('likeStage');
     const likeQuestion = document.getElementById('likeQuestion');
@@ -262,10 +264,8 @@
     const resultText = document.getElementById('resultText');
     const resultSub = document.getElementById('resultSub');
 
-    // Focus name field on load
     nameInput.focus();
 
-    // Step 1: Capture name, proceed
     nextBtn.addEventListener('click', async () => {
       const name = (nameInput.value || '').trim();
       if(!name){
@@ -277,7 +277,6 @@
       nameInput.style.borderColor = '';
       nameInput.style.boxShadow = '';
 
-      // Add playful response
       await showTyping(800);
       const greet = document.createElement('div');
       greet.className = 'bubble bot';
@@ -287,18 +286,17 @@
       await showTyping(900);
       likeQuestion.textContent = `${name}, kamu suka aku nggak? 🤭`;
       likeStage.style.display = 'block';
-
-      // Smooth scroll to like stage
       likeStage.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    // Step 2: Yes response
+    hannqieBtn.addEventListener('click', () => {
+      window.open("https://www.instagram.com/hanqqie_/", "_blank");
+    });
+
     yesBtn.addEventListener('click', async () => {
-      // Hide like stage, show result
       chat.style.display = 'none';
       likeStage.style.display = 'none';
       typing.style.display = 'none';
-
       result.style.display = 'block';
       const name = (nameInput.value || '').trim();
       resultText.textContent = `jujurly Aku juga sangat suka sama kamu, ${name}! 🥰`;
@@ -306,11 +304,10 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Step 3: No button runs away
     const area = document.getElementById('likeActions');
     let attempts = 0;
     function randomPos() {
-      const pad = 6; // safety padding
+      const pad = 6;
       const maxX = area.clientWidth - noBtn.offsetWidth - pad;
       const maxY = area.clientHeight - noBtn.offsetHeight - pad;
       const x = Math.max(0, Math.min(maxX, Math.floor(Math.random() * (maxX + 1))));
@@ -318,16 +315,12 @@
       noBtn.style.left = x + 'px';
       noBtn.style.top  = y + 'px';
     }
-
-    // Move on hover and on click
     function escape() {
       attempts++;
       randomPos();
       noBtn.style.transition = 'left .12s ease, top .12s ease, transform .12s ease';
       noBtn.style.transform = 'scale(0.96)';
       setTimeout(() => noBtn.style.transform = 'none', 140);
-
-      // Occasionally tease
       if(attempts === 3){
         const tease = document.createElement('div');
         tease.className = 'bubble bot';
@@ -338,11 +331,9 @@
     noBtn.addEventListener('mouseenter', escape);
     noBtn.addEventListener('click', escape);
     window.addEventListener('resize', () => {
-      // keep the button within bounds on resize
-      if(noBtn.parentElement === area){
-        randomPos();
-      }
+      if(noBtn.parentElement === area){ randomPos(); }
     });
   </script>
+  
 </body>
 </html>
